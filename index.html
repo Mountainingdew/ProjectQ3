@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Q3 Skills Test</title>
+<title>Q3 Project</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-/* color palette to apply color easier while coding */
 :root {
   --bg-main: #0b0f14;
   --bg-panel: #121821;
@@ -136,6 +135,12 @@ section {
   padding: 40px;
   max-width: 1000px;
   margin: auto;
+}
+
+.howitworks {
+  max-width: 100% !important;
+  width: 100%;
+  padding: 80px 60px;
 }
 
 .hero {
@@ -305,12 +310,63 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   transform: scale(1.05);
 }
 
+.how-it-works {
+  background: linear-gradient(to right, #1e1e1e, #2a2a2a);
+  padding: 80px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.how-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.how-it-works h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #cccccc;
+  margin-bottom: 50px;
+  font-size: 15px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.how-box {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px;
+  border-radius: 8px;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.how-box h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.how-box p {
+  font-size: 14px;
+  color: #dddddd;
+}
+
+.how-box:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
 </style>
 </head>
 
 <body>
 
-  <!--loading page-->
 <div id="loader">
   <div class="bike">🏍️</div>
   <p>Starting GoMotorcycle...</p>
@@ -379,16 +435,36 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 </section>
 
 <section id="home">
-  <div class="hero">
+  <div class="hero" style="display:flex; align-items:center; gap:20px;">
     <div style="flex:1;">
-      <h1 style="color:var(--accent-main)">MRT Line 3</h1>
-      <p>North Avenue – Taft Avenue</p>
-      <p><b>Fare Range:</b> ₱13 – ₱28</p>
-      <p><b>Discount:</b> 20%</p>
+      
+      <h1 style="color:var(--accent-main);">
+        MRT Line 3 Route
+      </h1>
+
+      <p>
+        <span style="font-size:1.3em; font-weight:bold;">North Avenue</span> – 
+        <span style="font-size:1.3em; font-weight:bold;">Taft Avenue</span>
+      </p>
+
+      <p>
+        <b style="color:var(--accent-alt);">
+          Fare Range:
+        </b> ₱40 – ₱200
+      </p>
+
+      <p>
+        <b style="color:var(--accent-alt);">
+          Discount for Senior/PWD/Student:
+        </b> 20%
+      </p>
+
     </div>
+
     <div style="flex:1;text-align:center;">
-      <img src="https://www.sumitomocorp.com/asia-oceania/-/media/Images/hq/news/topics/2023/20230531/04-2_en.png?h=515&iar=0&w=915"
-      style="max-width:100%;border-radius:12px;">
+      <img 
+        src="https://www.sumitomocorp.com/asia-oceania/-/media/Images/hq/news/topics/2023/20230531/04-2_en.png?h=515&iar=0&w=915"
+        style="max-width:100%;border-radius:12px;">
     </div>
   </div>
 </section>
@@ -415,10 +491,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     <h3 style="color:var(--accent-main)">Passenger Reminders</h3>
       <img src="https://www.wikihow.com/images/2/24/Ride-on-the-Back-of-a-Motorcycle-Step-20-Version-3.jpg"
        style="width:100%;border-radius:10px;margin:10px 0;">
-    <p>• Arrive at least 15 minutes early.</p>
+    <p>• Arrive early.</p>
     <p>• Prepare valid ID for discount passengers.</p>
-    <p>• Follow motorcycle safety rules at all times.</p>
+    <p>• Follow motorcycle safety.</p>
     <p>• Keep your belongings secure.</p>
+    <p>• Respect for all.</p>
+    <p>• Keep it safe and clean.</p>
   </div>
 
 <div class="info-card" style="flex:0 0 320px;padding:22px;border-radius:12px;">
@@ -426,11 +504,254 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     <h3 style="color:var(--accent-main)">Operating Schedule</h3>
      <img src="https://thumbs.dreamstime.com/b/isometric-business-people-scheduling-operation-desk-calendar-flat-d-planning-drawing-circle-mark-operations-97395140.jpg"
        style="width:100%;border-radius:10px;margin:10px 0;">
-    <p><b>First Trip:</b> 4:30 AM</p>
-    <p><b>Last Trip:</b> 10:30 PM</p>
+   <p>Available 24 hours any time</p>
     <p>Available Daily</p>
   </div>
 
+<section style="margin-top:60px; padding:0 40px;">
+  <h2 style="text-align:center; color:var(--accent-main); margin-bottom:20px; font-size:36px; font-weight:800;">
+    Our Services
+  </h2>
+  <p style="text-align:center; color:var(--text-muted); margin-bottom:50px; font-size:18px; max-width:900px; margin-left:auto; margin-right:auto;">
+    Explore a range of services designed to meet your urban travel needs.
+  </p>
+  <div style="display:flex; gap:30px; justify-content:center; flex-wrap:wrap;">
+
+    <div class="info-card" style="flex:1; max-width:360px; padding:28px; border-radius:16px; text-align:center;">
+      <img src="https://img.freepik.com/premium-photo/young-asian-female-student-using-her-cell-phone-mobile-phone-smart-phone_948269-4060.jpg" 
+           style="width:100%; height:240px; object-fit:cover; border-radius:14px; margin-bottom:20px;">
+      <h3 style="color:var(--accent-main); font-size:20px; margin-bottom:10px;">Scheduled Rides</h3>
+      <p style="color:var(--text-muted); font-size:15px; line-height:1.6;">
+        Book your motorcycle ride in advance and arrive right on time for work, or meetings.
+      </p>
+    </div>
+
+    <div class="info-card" style="flex:1; max-width:360px; padding:28px; border-radius:16px; text-align:center;">
+      <img src="https://visor.ph/wp-content/uploads/2020/07/back-riders-couples-main.jpg" 
+           style="width:100%; height:240px; object-fit:cover; border-radius:14px; margin-bottom:20px;">
+      <h3 style="color:var(--accent-main); font-size:20px; margin-bottom:10px;">Daily Commute Pass</h3>
+      <p style="color:var(--text-muted); font-size:15px; line-height:1.6;">
+        Save more on your regular trips with a fixed-rate motorcycle pass for everyday travel.
+      </p>
+    </div>
+
+    <div class="info-card" style="flex:1; max-width:360px; padding:28px; border-radius:16px; text-align:center;">
+      <img src="https://img.freepik.com/premium-photo/young-asian-commercial-online-taxi-driver-female-passenger-showing-thumbs-up-camera_603656-6122.jpg" 
+           style="width:100%; height:240px; object-fit:cover; border-radius:14px; margin-bottom:20px;">
+      <h3 style="color:var(--accent-main); font-size:20px; margin-bottom:10px;">Student Discounts</h3>
+      <p style="color:var(--text-muted); font-size:15px; line-height:1.6;">
+        Special rates for students to make urban travel more affordable while juggling studies and activities.
+      </p>
+    </div>
+
+  </div>
+</section>
+<section class="howitworks" 
+style="
+  margin-top:100px;
+  background:linear-gradient(135deg,var(--bg-main),var(--bg-panel));
+">
+
+  <div style="max-width:1400px;margin:auto;text-align:center;">
+
+    <h2 style="
+      font-size:34px;
+      color:var(--accent-main);
+      margin-bottom:10px;
+      font-weight:800;">
+      How It Works
+    </h2>
+
+    <p style="
+      color:var(--text-muted);
+      margin-bottom:60px;
+      font-size:16px;">
+      Experience a seamless ride from start to finish with our innovative platform.
+    </p>
+
+    <div style="
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+">
+
+      <div class="info-card" style="padding:30px;border-radius:16px;text-align:left;">
+        <h3 style="color:var(--accent-alt);margin-bottom:12px;">Request a Ride</h3>
+        <p style="color:var(--text-muted);font-size:15px;">
+          Simply open the app, input your destination, and request a ride in seconds.
+        </p>
+      </div>
+
+      <div class="info-card" style="padding:30px;border-radius:16px;text-align:left;">
+        <h3 style="color:var(--accent-alt);margin-bottom:12px;">Smart Matching</h3>
+        <p style="color:var(--text-muted);font-size:15px;">
+          Our system quickly matches you with a nearby driver.
+        </p>
+      </div>
+
+      <div class="info-card" style="padding:30px;border-radius:16px;text-align:left;">
+        <h3 style="color:var(--accent-alt);margin-bottom:12px;">Ride Tracking</h3>
+        <p style="color:var(--text-muted);font-size:15px;">
+          Track your ride in real-time with live updates.
+        </p>
+      </div>
+
+      <div class="info-card" style="padding:30px;border-radius:16px;text-align:left;">
+        <h3 style="color:var(--accent-alt);margin-bottom:12px;">Arrive Safely</h3>
+        <p style="color:var(--text-muted);font-size:15px;">
+          Enjoy your ride in comfort and safety.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="max-width:1200px;margin:60px auto;padding:40px;background:linear-gradient(135deg,#0f172a,#111827);border-radius:18px;color:white;display:flex;flex-wrap:wrap;align-items:center;gap:30px;">
+
+  <div style="flex:1;min-width:350px;">
+    <h2 style="font-size:28px;color:var(--accent-main);margin-bottom:25px;font-weight:800;">
+      GoMotorcycle 5-RIDER PROMISE
+    </h2>
+
+    <div style="display:flex;flex-direction:column;gap:15px;">
+      <div style="display:flex;align-items:flex-start;gap:15px;">
+        <span style="font-weight:800;font-size:22px;color:var(--accent-alt);flex-shrink:0;">1</span>
+        <div>
+          <strong>Fast Rides, No Waiting.</strong>
+          <p style="margin:2px 0 0;color:var(--text-muted);font-size:14px;">
+            We move when you book. Quick pickup, smooth drop-off.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:15px;">
+        <span style="font-weight:800;font-size:22px;color:var(--accent-alt);">2</span>
+        <div>
+          <strong>Clear Fares, No Surprises.</strong>
+          <p style="margin:2px 0 0;color:var(--text-muted);font-size:14px;">
+            What you see is what you pay. Always upfront.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:15px;">
+        <span style="font-weight:800;font-size:22px;color:var(--accent-alt);">3</span>
+        <div>
+          <strong>Safe Every Trip.</strong>
+          <p style="margin:2px 0 0;color:var(--text-muted);font-size:14px;">
+            Trained riders, proper helmets, and strict safety standards.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:15px;">
+        <span style="font-weight:800;font-size:22px;color:var(--accent-alt);">4</span>
+        <div>
+          <strong>Respect on the Road.</strong>
+          <p style="margin:2px 0 0;color:var(--text-muted);font-size:14px;">
+            Professional, polite, and city-smart drivers.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:15px;">
+        <span style="font-weight:800;font-size:22px;color:var(--accent-alt);">5</span>
+        <div>
+          <strong>Always Improving.</strong>
+          <p style="margin:2px 0 0;color:var(--text-muted);font-size:14px;">
+            We listen, we adjust, and we ride better every day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:300px;display:flex;align-items:center;justify-content:center;">
+    <img src="https://cdn.cdnparenting.com/articles/2019/04/07121438/1096849487-H.jpg" 
+         style="max-width:100%;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+  </div>
+
+</section>
+</div>
+
+<section style="margin-top:30px;background:linear-gradient(135deg,#0f172a,#111827);padding:60px 20px;border-radius:20px;">
+
+  <h2 style="text-align:center;color:var(--accent-alt);margin-bottom:10px;font-size:30px;">
+    Passenger Feedback
+  </h2>
+
+  <p style="text-align:center;color:var(--text-muted);margin-bottom:40px;">
+    What our customers are saying about their Gomotorcycle experience.
+  </p>
+
+  <div style="display:flex;gap:25px;justify-content:center;flex-wrap:nowrap;">
+
+<div class="info-card" style="flex:1;max-width:300px;padding:22px;border-radius:14px;text-align:center;">
+
+  <h4 style="color:var(--accent-main); margin:0;">
+    Fast and Reliable
+  </h4>
+
+  <p style="color:var(--accent-main); font-size:14px; margin:4px 0 2px;">
+    - Gerry Alvarez
+  </p>
+
+  <p style="color:var(--accent-main); font-size:14px; margin:0 0 10px;">
+    ★★★★★
+  </p>
+
+  <p style="color:var(--text-muted);font-size:14px;margin:0;">
+    I've tried several ride services, but this one is by far the fastest and most reliable. Highly recommended!
+  </p>
+
+</div>
+
+<div class="info-card" style="flex:1;max-width:300px;padding:22px;border-radius:14px;text-align:center;">
+
+  <h4 style="color:var(--accent-main); margin:0;">
+    Eco-Friendly Choice
+  </h4>
+
+  <p style="color:var(--accent-main); font-size:14px; margin:4px 0 2px;">
+    - Christina Aguillar
+  </p>
+
+  <p style="color:var(--accent-main); font-size:14px; margin:0 0 10px;">
+    ★★★★★
+  </p>
+
+  <p style="color:var(--text-muted);font-size:14px;margin:0;">
+    I love that I can travel sustainably without sacrificing speed. GoMotorcycle makes it easy to be green.
+  </p>
+
+</div>
+
+
+<div class="info-card" style="flex:1;max-width:300px;padding:22px;border-radius:14px;text-align:center;">
+
+  <h4 style="color:var(--accent-main); margin:0;">
+    Perfect for Students
+  </h4>
+
+  <p style="color:var(--accent-main); font-size:14px; margin:4px 0 2px;">
+    - Miguel Perez
+  </p>
+
+  <p style="color:var(--accent-main); font-size:14px; margin:0 0 10px;">
+    ★★★★★
+  </p>
+
+  <p style="color:var(--text-muted);font-size:14px;margin:0;">
+    As a student, the discounts and convenience are a game-changer for getting around the city.
+  </p>
+
+</div>
+
+  </div>
+
+
+</section>
 </div>
 
 <section id="fare">
@@ -488,7 +809,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 </section>
 
 <footer>
-  <p>Neo Macaraig – 9Emerald</p>
+  <p>Karl Borja, Neo Macaraig – 9Emerald</p>
   <p>GoMotorcycle</p>
 </footer>
 
@@ -497,20 +818,21 @@ const stations=[ "North Avenue","Quezon Avenue","GMA Kamuning","Araneta Cubao",
 "Santolan-Annapolis","Ortigas","Shaw Boulevard","Boni",
 "Guadalupe","Buendia","Ayala","Magallanes","Taft Avenue"];
 
-const fareMatrix=
-{0:[0,13,13,16,16,20,20,20,24,24,24,28,28],
-1:[13,0,13,13,16,16,20,20,20,24,24,24,28],
-2:[13,13,0,13,13,16,16,20,20,20,24,24,24],
-3:[16,13,13,0,13,16,16,20,20,20,24,24,28],
-4:[16,16,13,13,0,13,16,20,20,20,24,24,28],
-5:[20,16,16,16,13,0,13,20,20,20,24,24,28],
-6:[20,20,16,16,16,13,0,16,20,20,20,24,28],
-7:[20,20,20,20,20,20,16,0,16,20,20,24,28],
-8:[24,20,20,20,20,20,20,16,0,16,20,24,28],
-9:[24,24,20,20,20,20,20,20,16,0,16,24,28],
-10:[24,24,24,24,20,24,20,20,20,16,0,20,28],
-11:[28,24,24,24,24,24,24,24,24,24,20,0,24],
-12:[28,28,24,28,28,28,28,28,28,28,28,24,0]};
+const fareMatrix = {
+0:[0,40,50,60,75,90,110,130,150,165,180,190,200],
+1:[40,0,40,50,60,75,90,110,130,150,165,180,190],
+2:[50,40,0,40,50,60,75,90,110,130,150,165,180],
+3:[60,50,40,0,40,50,60,75,90,110,130,150,165],
+4:[75,60,50,40,0,40,50,60,75,90,110,130,150],
+5:[90,75,60,50,40,0,40,50,60,75,90,110,130],
+6:[110,90,75,60,50,40,0,40,50,60,75,90,110],
+7:[130,110,90,75,60,50,40,0,40,50,60,75,90],
+8:[150,130,110,90,75,60,50,40,0,40,50,60,75],
+9:[165,150,130,110,90,75,60,50,40,0,40,50,60],
+10:[180,165,150,130,110,90,75,60,50,40,0,40,50],
+11:[190,180,165,150,130,110,90,75,60,50,40,0,40],
+12:[200,190,180,165,150,130,110,90,75,60,50,40,0]
+};
 
 window.onload=()=>{
 stations.forEach((s,i)=>{
