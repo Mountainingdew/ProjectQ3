@@ -52,6 +52,25 @@ input.error, select.error{
   border:1px solid var(--danger);
 }
 
+ .login-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-panel);
+    color: var(--text-main);
+    font-size: 14px;
+  }
+
+  .login-input:focus {
+    border: 1px solid var(--accent-alt);
+    box-shadow: 0 0 8px rgba(52,211,153,0.4);
+    outline: none;
+  }
+
+
 #loader {
   position: fixed;
   width: 100%;
@@ -117,18 +136,22 @@ nav ul li a:hover {
 }
 
 .book-btn {
-  background: linear-gradient(135deg, var(--accent-main), var(--accent-soft));
-  color: #020617;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-weight: bold;
+  background: var(--accent-alt); 
+  color: var(--bg-main);         
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700;
   text-decoration: none;
-  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
 .book-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(251,191,36,0.5);
+  background: var(--accent-soft); 
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }
 
 section {
@@ -372,17 +395,115 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   <p>Starting GoMotorcycle...</p>
 </div>
 
+<div id="loginScreen" style="
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+">
+
+  <div style="
+      position: relative;
+      background: rgba(22,29,41,0.9);
+      padding:40px;
+      border-radius:18px;
+      width:350px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      text-align:center;
+  ">
+
+    <span onclick="closeLogin()" style="
+        position: absolute;
+        top:10px;
+        right:15px;
+        font-size:24px;
+        font-weight:bold;
+        color: var(--accent-soft);
+        cursor: pointer;
+    ">&times;</span>
+
+    <h2 style="color:var(--accent-main);margin-bottom:20px;">
+      Welcome to GoMotorcycle
+    </h2>
+
+    <label>Full Name</label>
+    <input type="text" id="loginName" class="login-input">
+
+    <label>Email</label>
+    <input type="email" id="loginEmail" class="login-input">
+
+    <label>Password</label>
+    <div style="position:relative;">
+      <input type="password" id="loginPassword" class="login-input" style="padding-right:40px;">
+      <span onclick="togglePassword()" style="
+          position:absolute;
+          right:12px;
+          top:50%;
+          transform:translateY(-50%);
+          cursor:pointer;
+          color:var(--text-muted);
+          font-size:16px;
+          user-select:none;
+      ">👁</span>
+    </div>
+
+    <button onclick="registerUser()" style="margin-top:25px;">
+      Register & Enter
+    </button>
+
+    <div id="loginWarning" class="warning" style="margin-top:10px;">
+      Please fill out all fields correctly.
+    </div>
+
+  </div>
+</div>
+
+<div id="successPopup" style="
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(22,29,41,0.95);
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  display: none;
+  z-index: 10000;
+">
+  <h3 style="color: var(--accent-main); margin-bottom: 15px;">Registration Successful! 🎉</h3>
+  <p style="color: var(--text-main); margin-bottom: 20px;">Welcome to GoMotorcycle.</p>
+  <button onclick="closeSuccessPopup()" style="
+    background: linear-gradient(135deg, var(--accent-alt), #22c55e);
+    padding: 12px 25px;
+    border-radius: 999px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    color: #020617;
+  ">OK</button>
+</div>
+
+<div id="mainWebsite">
+
 <nav>
   <div style="display:flex;align-items:center;">
     <div class="logo">🏍️ GoMotorcycle</div>
     <div class="clock" id="clock"></div>
   </div>
-  <ul>
+  <ul style="display:flex;gap:15px;align-items:center;margin:0;padding:0;">
     <li><a href="#home">Home</a></li>
     <li><a href="#fare">Fare Calculator</a></li>
     <li><a href="#schedule">Schedule</a></li>
   </ul>
-  <a href="#fare" class="book-btn">Book Ride</a>
+  <div style="display:flex;gap:10px;">
+    <a href="#fare" class="book-btn">Book Ride</a>
+ <button onclick="openLogin()" class="book-btn">Account / Login</button>
+  </div>
 </nav>
 
 <section style="
@@ -395,7 +516,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background-position: center 30%; 
   background-repeat: no-repeat;
 ">
-
 
   <h1 style="font-size:42px;margin-bottom:20px;">
  Ride smarter with
@@ -484,6 +604,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     <p>3. Click Calculate Fare.</p>
     <p>4. Fill in passenger details.</p>
     <p>5. Confirm your booking.</p>
+    <p>6. Can be paid onsite or deposit through GCash or maya.</p>
   </div>
 
 <div class="info-card" style="flex:0 0 320px;padding:22px;border-radius:12px;">
@@ -813,10 +934,14 @@ style="
   <p>GoMotorcycle</p>
 </footer>
 
+</div>
+
 <script>
-const stations=[ "North Avenue","Quezon Avenue","GMA Kamuning","Araneta Cubao",
+const stations = [
+"North Avenue","Quezon Avenue","GMA Kamuning","Araneta Cubao",
 "Santolan-Annapolis","Ortigas","Shaw Boulevard","Boni",
-"Guadalupe","Buendia","Ayala","Magallanes","Taft Avenue"];
+"Guadalupe","Buendia","Ayala","Magallanes","Taft Avenue"
+];
 
 const fareMatrix = {
 0:[0,40,50,60,75,90,110,130,150,165,180,190,200],
@@ -834,65 +959,212 @@ const fareMatrix = {
 12:[200,190,180,165,150,130,110,90,75,60,50,40,0]
 };
 
-window.onload=()=>{
+function openLogin(){
+  document.getElementById("loginScreen").style.display="flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginScreen").style.display = "none";
+}
+
+function togglePassword() {
+  const input = document.getElementById('loginPassword');
+  if(input.type === 'password'){
+    input.type = 'text';
+  } else {
+    input.type = 'password';
+  }
+}
+
+function registerUser(){
+  let name = document.getElementById("loginName").value.trim();
+  let emailLogin = document.getElementById("loginEmail").value.trim();
+  let pass = document.getElementById("loginPassword").value.trim();
+
+  if(name.length < 3 || 
+     !/^[^ ]+@[^ ]+\.[a-z]{2,}$/i.test(emailLogin) ||
+     pass.length < 6){
+    document.getElementById("loginWarning").style.display="block";
+    return;
+  }
+
+  document.getElementById("loginWarning").style.display="none";
+  document.getElementById("loginScreen").style.display="none";
+  document.getElementById("mainWebsite").style.display="block";
+}
+
+window.onload = function(){
+
 stations.forEach((s,i)=>{
-fromStation.add(new Option(s,i));
-toStation.add(new Option(s,i));
+document.getElementById("fromStation").add(new Option(s,i));
+document.getElementById("toStation").add(new Option(s,i));
 });
-setTimeout(()=>loader.style.display="none",2000);
-travelDate.min=new Date().toISOString().split("T")[0];
-setInterval(()=>clock.innerHTML=new Date().toLocaleString(),1000);
+
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+document.getElementById("loginScreen").style.display="none";
+},2000);
+
+document.getElementById("travelDate").min =
+new Date().toISOString().split("T")[0];
+
+setInterval(()=>{
+document.getElementById("clock").innerHTML =
+new Date().toLocaleString();
+},1000);
+
 };
 
+function registerUser() {
+  let name = document.getElementById("loginName").value.trim();
+  let emailLogin = document.getElementById("loginEmail").value.trim();
+  let pass = document.getElementById("loginPassword").value.trim();
+
+  const warning = document.getElementById("loginWarning");
+  warning.innerHTML = "";
+  warning.style.display = "none";
+
+  let valid = true;
+  let messages = [];
+
+  if (name.length < 3) {
+    valid = false;
+    messages.push("Name must be at least 3 characters.");
+  }
+
+  if (!/^[^ ]+@[^ ]+\.[a-z]{2,}$/i.test(emailLogin)) {
+    valid = false;
+    messages.push("Enter a valid email address.");
+  }
+
+  if (pass.length < 6) {
+    valid = false;
+    messages.push("Password must be at least 6 characters.");
+  }
+
+  if (!valid) {
+    warning.innerHTML = messages.join("<br>");
+    warning.style.display = "block";
+    return;
+  }
+
+
+  showSuccessPopup();
+}
+
+function showSuccessPopup() {
+  document.getElementById("successPopup").style.display = "block";
+}
+
+function closeSuccessPopup() {
+  const popup = document.getElementById("successPopup");
+  if (popup) popup.style.display = "none";
+
+  const loginForm = document.getElementById("loginScreen");
+  if (loginForm) loginForm.remove();
+
+  const main = document.getElementById("mainWebsite");
+  if (main) main.style.display = "block";
+}
+
 function computeFare(){
-if(fromStation.value===toStation.value){
-stationWarn.style.display="block";
+
+let from = document.getElementById("fromStation");
+let to = document.getElementById("toStation");
+let passType = document.getElementById("passType");
+
+if(from.value === to.value){
+document.getElementById("stationWarn").style.display="block";
 return;
 }
-stationWarn.style.display="none";
-let fare=fareMatrix[fromStation.value][toStation.value];
-if(passType.value==="discount") fare*=0.8;
-result.innerHTML=`<b>Fare:</b> ₱${fare.toFixed(2)}`;
-result.style.opacity=1;
-bookingSection.style.display="block";
+
+document.getElementById("stationWarn").style.display="none";
+
+let fare = fareMatrix[from.value][to.value];
+
+if(passType.value === "discount"){
+fare *= 0.8;
+}
+
+document.getElementById("result").innerHTML =
+`<b>Fare:</b> ₱${fare.toFixed(2)}`;
+
+document.getElementById("result").style.opacity = 1;
+document.getElementById("bookingSection").style.display="block";
+
 }
 
 function confirmBooking(){
-let valid=true;
 
-function validate(input,condition,warning){
+let valid = true;
+
+function validate(input, condition, warning){
 if(!condition){
 input.classList.add("error");
 warning.style.display="block";
-valid=false;
+valid = false;
 }else{
 input.classList.remove("error");
 warning.style.display="none";
 }
 }
 
-validate(fullName,fullName.value.length>=3,nameWarn);
-validate(age,age.value>=13&&age.value<=120,ageWarn);
-validate(contact,/^09\d{9}$/.test(contact.value),contactWarn);
-validate(email,/^[^ ]+@[^ ]+\.[a-z]{2,}$/i.test(email.value),emailWarn);
-validate(travelDate,new Date(travelDate.value)>=new Date().setHours(0,0,0,0),dateWarn);
-validate(travelTime,travelTime.value!=="",timeWarn);
+let fullName = document.getElementById("fullName");
+let age = document.getElementById("age");
+let contact = document.getElementById("contact");
+let emailBook = document.getElementById("email");
+let selectedDate = travelDate.value;
+let selectedTime = travelTime.value;
+
+let selectedDateTime = new Date(selectedDate + "T" + selectedTime);
+let now = new Date();
+
+validate(travelDate,
+selectedDate !== "" && selectedDateTime >= now,
+document.getElementById("dateWarn"));
+
+validate(travelTime,
+selectedTime !== "" && selectedDateTime >= now,
+document.getElementById("timeWarn"));
+
+validate(fullName, fullName.value.length >= 3,
+document.getElementById("nameWarn"));
+
+validate(age, age.value >= 13 && age.value <= 120,
+document.getElementById("ageWarn"));
+
+validate(contact, /^09\d{9}$/.test(contact.value),
+document.getElementById("contactWarn"));
+
+validate(emailBook, /^[^ ]+@[^ ]+\.[a-z]{2,}$/i.test(emailBook.value),
+document.getElementById("emailWarn"));
+
+validate(travelDate,
+new Date(travelDate.value) >= new Date().setHours(0,0,0,0),
+document.getElementById("dateWarn"));
+
+validate(travelTime,
+travelTime.value !== "",
+document.getElementById("timeWarn"));
 
 if(!valid) return;
 
-let ref="MRT"+Math.floor(Math.random()*100000);
+let ref = "MRT" + Math.floor(Math.random()*100000);
 
-confirmation.innerHTML=`
+document.getElementById("confirmation").innerHTML = `
 <h3 style="color:var(--accent-main)">Booking Confirmed 🎉</h3>
 <p><b>Name:</b> ${fullName.value}</p>
 <p><b>Age:</b> ${age.value}</p>
 <p><b>Contact:</b> ${contact.value}</p>
-<p><b>Email:</b> ${email.value}</p>
+<p><b>Email:</b> ${emailBook.value}</p>
 <p><b>Date:</b> ${travelDate.value}</p>
 <p><b>Time:</b> ${travelTime.value}</p>
 <p><b>Reference No:</b> ${ref}</p>
 `;
-confirmation.style.opacity=1;
+
+document.getElementById("confirmation").style.opacity = 1;
+
+
 }
 </script>
 
